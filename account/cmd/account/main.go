@@ -1,4 +1,4 @@
-package account
+package main
 
 import (
 	"log"
@@ -6,7 +6,6 @@ import (
 
 	"github.com/Cutshadows/microservices-go/account"
 	"github.com/kelseyhightower/envconfig"
-	"github.com/ydb-platform/ydb-go-sdk/v3/retry"
 )
 
 type Config struct {
@@ -21,16 +20,16 @@ func main() {
 	}
 
 	var r account.Repository
-	retry.ForeverSleep(2*time.Second, func(_ int) (err error) {
+	for {
 		r, err = account.NewPostgresRepository(cfg.DatabaseURL)
-		if err != nil {
-			log.Println(err)
+		if err == nil {
+			break
 		}
-		return
-	})
+		log.Println(err)
+		time.Sleep(2 * time.Second)
+	}
 
 	defer r.Close()
-	log.Println("listening on port 8080 ...")
 	s := account.NewService(r)
 	log.Fatal(account.ListenGRPC(s, 8080))
 }

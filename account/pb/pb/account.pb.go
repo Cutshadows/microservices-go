@@ -7,12 +7,11 @@
 package pb
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -366,12 +365,12 @@ const file_account_proto_rawDesc = "" +
 	"\x04skip\x18\x01 \x01(\x04R\x04skip\x12\x12\n" +
 	"\x04take\x18\x02 \x01(\x04R\x04take\">\n" +
 	"\x13GetAccountsResponse\x12'\n" +
-	"\baccounts\x18\x01 \x03(\v2\v.pb.AccountR\baccounts2\xd4\x01\n" +
+	"\baccounts\x18\x01 \x03(\v2\v.pb.AccountR\baccounts2\xd3\x01\n" +
 	"\x0eAccountService\x12@\n" +
 	"\vPostAccount\x12\x16.pb.PostAccountRequest\x1a\x17.pb.PostAccountResponse\"\x00\x12=\n" +
 	"\n" +
-	"GetAccount\x12\x15.pb.GetAccountRequest\x1a\x16.pb.GetAccountResponse\"\x00\x12A\n" +
-	"\fGetAccounts\x12\x16.pb.GetAccountsRequest\x1a\x17.pb.GetAccountsResponse\"\x00B3Z1github.com/Cutshadows/microservices-go/account/pbb\x06proto3"
+	"GetAccount\x12\x15.pb.GetAccountRequest\x1a\x16.pb.GetAccountResponse\"\x00\x12@\n" +
+	"\vGetAccounts\x12\x16.pb.GetAccountsRequest\x1a\x17.pb.GetAccountsResponse\"\x00B\x06Z\x04./pbb\x06proto3"
 
 var (
 	file_account_proto_rawDescOnce sync.Once
