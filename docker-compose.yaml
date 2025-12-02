@@ -1,0 +1,54 @@
+#version: "3.7"
+
+services:
+  account:
+    build:
+      context: .
+      dockerfile: ./account/app.dockerfile
+    # depends_on:
+    #   - postgres
+    environment:
+      DATABASE_URL: ${DATABASE_URL}/account?sslmode=disable
+    restart: on-failure
+
+  # catalog:
+  #   build:
+  #     context: .
+  #     dockerfile: ./catalog/app.dockerfile
+  #   # depends_on:
+  #   #   - db
+  #   environment:
+  #     DATABASE_URL: http://catalog_db:9200
+  #   restart: on-failure
+
+  # order:
+  #   build:
+  #     context: .
+  #     dockerfile: ./order/app.dockerfile
+  #   # depends_on:
+  #   #   - postgres
+  #   environment:
+  #     DATABASE_URL: ${DATABASE_URL}/order?sslmode=disable
+  #     ACCOUNT_SERVICE_URL: account:8080
+  #     CATALOG_SERVICE_URL: catalog:8080
+  #   restart: on-failure
+
+  graphql:
+    build:
+      context: .
+      dockerfile: ./graphql/app.dockerfile
+    ports:
+      - 8000:8080
+    # depends_on:
+    #   - db
+    environment:
+      ACCOUNT_SERVICE_URL: account:8080
+      CATALOG_SERVICE_URL: catalog:8080
+      ORDER_SERVICE_URL: order:8080
+    restart: on-failure
+
+  catalog_db:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    environment:
+      ES_JAVA_OPTS: -Xms1g -Xmx1g
+      discovery.type: single-node
