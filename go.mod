@@ -15,16 +15,24 @@ require (
 )
 
 require (
+	github.com/mailru/easyjson v0.7.1 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
+)
+
+require (
 	github.com/agnivade/levenshtein v1.2.1 // indirect
 	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/jonboulle/clockwork v0.5.0 // indirect
+	github.com/lib/pq v1.10.9
 	github.com/sosodev/duration v1.3.1 // indirect
+	github.com/tinrab/retry v1.0.0
 	github.com/ydb-platform/ydb-go-genproto v0.0.0-20251125145508-6d7ef87db5cb // indirect
 	golang.org/x/net v0.46.1-0.20251013234738-63d1a5100f82 // indirect
 	golang.org/x/sys v0.37.0 // indirect
 	golang.org/x/text v0.30.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20251022142026-3a174f9686a8 // indirect
+	gopkg.in/olivere/elastic.v5 v5.0.86
 )
